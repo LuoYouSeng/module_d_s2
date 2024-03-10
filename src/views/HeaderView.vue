@@ -1,5 +1,15 @@
 <script setup>
+import { useCounterStore } from '@/stores/counter';
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
+async function fetchUser() {
+    
+    const response = await fetch(VITE_API_URL + '/games', {
+        method: 'post'
+    })
+    const data = await response.json()
+}
+const countStore = useCounterStore()
 </script>
 
 <template>
@@ -9,10 +19,10 @@ import { RouterLink } from 'vue-router';
         </div>
         <ul class="list">
             <li>
-                <RouterLink class="link" to="">Sign Up</RouterLink>
+                <RouterLink class="link" to="register">Sign Up</RouterLink>
             </li>
             <li>
-                <RouterLink class="link" to="">Sign In</RouterLink>
+                <RouterLink class="link" to="login">Sign In</RouterLink>
             </li>
         </ul>
     </nav>
@@ -25,7 +35,7 @@ import { RouterLink } from 'vue-router';
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     border-bottom: 2px solid #42b883;
 }
 
@@ -44,6 +54,7 @@ import { RouterLink } from 'vue-router';
 .link {
     text-decoration: none;
     color: #42b883;
+    font-size: 1.2rem;
 }
 
 </style>
